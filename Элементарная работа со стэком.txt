@@ -1,0 +1,57 @@
+#include <iostream>
+#include <string>
+#include <stack>
+
+using namespace std;
+
+stack<int> s;
+string str;
+int n;
+
+int main(void)
+{
+    setlocale(0, "rus");
+    cout << "Выбор команды" << endl;
+    cout << "Чтобы выбрать команду,напишите ее название ниже (push,pop,back,size,clear,exit):" << endl;
+    while (cin >> str)
+    {
+        if (str == "push")
+        {
+            cout << "Введите элемент,который нужно доабвить: ";
+            cin >> n;
+            s.push(n);
+            cout << "ok" << endl;
+        }
+        else
+            if (str == "pop")
+            {
+                cout << "Последний элемнт стека удален. Его значение:";
+                cout << s.top() << endl;
+                s.pop();
+            }
+            else
+                if (str == "back")
+                {
+                    cout << "Последний элемнт стека: ";
+                    cout << s.top() << endl;
+                }
+                else
+                    if (str == "size")
+                    {
+                        cout << "Количество элементов в стеке: ";
+                        cout << s.size() << endl;
+                    }
+                    else
+                        if (str == "clear")
+                        {
+                            while (!s.empty()) s.pop();
+                            cout << "ok" << endl;
+                        }
+                        else
+                        {
+                            cout << "bye" << endl;
+                            break;
+                        }
+    }
+    return 0;
+}
