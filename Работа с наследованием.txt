@@ -1,0 +1,106 @@
+#include<iostream>
+#include <string>
+
+
+using namespace std;
+
+class Ambulance
+{
+public:
+	string name;
+	int age;
+	int timesWork;
+
+	Ambulance(string n, int a, int tW)
+	{
+		name = n;
+		age = a;
+		timesWork = tW;
+	};
+
+	virtual void calculate()
+	{
+		int month;
+		cout << "Сколько месяцев работал работник больницы? " << endl;
+		cin >> month;
+		cout << "\n Работник:  " << name << " возрастом:  " << age << " лет, будет дежурить:   " << endl;
+	}
+};
+
+class Nurse : public Ambulance
+{
+public:
+	int month;
+	string nameWork = "Медсестра";
+
+	Nurse(string n, int a, int tW, int m) : Ambulance(n, a, tW)
+	{
+		month = m;
+	};
+
+	void calculate() override
+	{
+		cout << "\nРаботник  " << nameWork << " по имени " << name << " возрастом " << age << " лет, будет дежурить " << timesWork * month << " дней " << endl;
+	};
+
+};
+
+
+class Employee : public Ambulance
+{
+public:
+	int month;
+	string nameWork = "Работник больницы";
+
+	Employee(string n, int a, int tW, int m) : Ambulance(n, a, tW)
+	{
+		month = m;
+	};
+
+	void calculate() override
+	{
+		cout << "\nРаботник  " << nameWork << " по имени " << name << " возрастом " << age << " лет, будет дежурить " << timesWork * month << " дней " << endl;
+	};
+
+};
+
+class Surgeon : public Ambulance
+{
+public:
+	int month;
+	string nameWork = "Хирург";
+
+	Surgeon(string n, int a, int tW, int m) : Ambulance(n, a, tW)
+	{
+		month = m;
+	};
+
+	void calculate() override
+	{
+		cout << "\nРаботник  " << nameWork << " по имени " << name << " возрастом " << age << " лет, будет дежурить " << timesWork * month << " дней " << endl;
+	};
+
+};
+
+void main()
+{
+	setlocale(0, "rus");
+	int month;
+	cout << "Сколько месяцев медсестра работала? ";
+	cin >> month;
+	Nurse first("Aлиса", 20, 8, month);
+	first.calculate();
+
+	cout << "\nСколько месяцев работал работник больницы? ";
+	cin >> month;
+	Employee second("Андрей", 35, 10, month);
+	second.calculate();
+
+	cout << "\nСколько месяцев работал хирург? ";
+	cin >> month;
+	Surgeon third("Кря", 55, 4, month);
+	third.calculate();
+
+	system("pause");
+
+}
